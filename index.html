@@ -7,31 +7,67 @@
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
-        /* --- 1. GLOBAL SETTINGS --- */
+        /* --- GLOBAL SETTINGS --- */
         * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
-        body { margin: 0; padding: 0; background-color: #050a1f; font-family: 'Poppins', sans-serif; color: white; overflow-x: hidden; padding-top: 110px; padding-bottom: 50px; }
+        body { margin: 0; padding: 0; background-color: #050a1f; font-family: 'Poppins', sans-serif; color: white; overflow-x: hidden; }
 
-        /* --- 2. BACKGROUND ORBS --- */
+        /* --- BACKGROUND --- */
         .orb-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
         .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6; }
         .orb-1 { width: 300px; height: 300px; background: linear-gradient(#ff00cc, #3333ff); top: -50px; left: -50px; animation: float 8s infinite alternate; }
         .orb-2 { width: 350px; height: 350px; background: linear-gradient(#ff9900, #ff0055); bottom: -50px; right: -80px; animation: float 10s infinite alternate; }
         @keyframes float { 0% { transform: translateY(0px); } 100% { transform: translateY(30px); } }
 
-        /* --- 3. HEADER --- */
-        header { position: fixed; top: 0; left: 0; width: 100%; height: 110px; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; z-index: 1000; background: rgba(5, 10, 31, 0.0); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
-        .logo-block { display: flex; align-items: center; gap: 12px; }
-        .logo-circle { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ff8c00); display: flex; align-items: center; justify-content: center; font-weight: 900; color: #000; font-size: 16px; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); flex-shrink: 0; }
+        /* --- HEADER --- */
+        header { position: fixed; top: 0; left: 0; width: 100%; height: 110px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 1000; background: rgba(5, 10, 31, 0.0); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+        .logo-block { display: flex; align-items: center; gap: 15px; }
+        .logo-circle { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ff8c00); display: flex; align-items: center; justify-content: center; font-weight: 900; color: #000; font-size: 16px; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); flex-shrink: 0; }
         .header-text { display: flex; flex-direction: column; justify-content: center; }
-        .header-text h1 { margin: 0; font-size: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; background: linear-gradient(to right, #ffd700, #ffea00, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 2px rgba(0,0,0,0.8)); }
-        .header-text p { margin: 2px 0 0 0; font-size: 9px; color: rgba(255, 255, 255, 0.7); letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
-        .menu-btn { font-size: 26px; color: white; cursor: pointer; padding: 10px; }
+        .header-text h1 { margin: 0; font-size: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; background: linear-gradient(to right, #ffd700, #ffea00, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-text p { margin: 2px 0 0 0; font-size: 10px; color: rgba(255, 255, 255, 0.7); letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+        .menu-btn { font-size: 28px; color: white; cursor: pointer; padding: 10px; }
 
-        /* --- 4. SIDEBAR MENU --- */
-        .sidebar { position: fixed; top: 0; right: -100%; width: 280px; height: 100%; background: rgba(5, 10, 31, 0.8); backdrop-filter: blur(30px); border-left: 1px solid rgba(255, 255, 255, 0.2); box-shadow: -5px 0 30px rgba(0,0,0,0.5); z-index: 2000; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; padding: 30px 20px; }
+        /* --- HERO SECTION --- */
+        .hero-section {
+            height: 85vh; width: 100%;
+            background: linear-gradient(to bottom, rgba(5,10,31,0.3), rgba(5,10,31,1)), url('2.jpg') no-repeat center center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
+            padding: 10px;
+            padding-top: 100px;
+        }
+        
+        .hero-title { 
+            font-size: 35px; font-weight: 900; line-height: 1.2; text-transform: uppercase; margin-bottom: 10px;
+            background: linear-gradient(to right, #ffffff, #ffd700, #ffea00, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+        }
+        .hero-title span { color: inherit; }
+
+        .hero-subtitle { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.9; display: flex; justify-content: center; margin-bottom: -300px; }
+
+        /* --- TYPING ANIMATION --- */
+        .typing-text {
+            display: inline-block; overflow: hidden; border-right: 3px solid #ffd700; white-space: nowrap; margin: 0 auto; max-width: 0;
+            animation: typing 12s steps(40, end) infinite, blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            0%, 5% { max-width: 0; }
+            40%, 75% { max-width: 100%; } 
+            90%, 100% { max-width: 0; } 
+        }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #ffd700; } }
+
+        /* --- SIDEBAR --- */
+        .sidebar { position: fixed; top: 0; right: -100%; width: 280px; height: 100%; background: rgba(5, 10, 31, 0.95); backdrop-filter: blur(30px); border-left: 1px solid rgba(255, 255, 255, 0.2); box-shadow: -5px 0 30px rgba(0,0,0,0.5); z-index: 2000; transition: 0.4s; display: flex; flex-direction: column; padding: 30px 20px; }
         .sidebar.active { right: 0; }
         .close-menu { align-self: flex-end; font-size: 28px; color: rgba(255,255,255,0.7); cursor: pointer; margin-bottom: 30px; }
         .menu-items { display: flex; flex-direction: column; gap: 20px; }
@@ -39,11 +75,11 @@
         .menu-link i { color: #ffd700; width: 25px; text-align: center; font-size: 18px; }
         .menu-link:active, .menu-link:hover { background: rgba(255, 255, 255, 0.1); transform: translateX(5px); }
 
-        /* --- 5. SECTIONS --- */
-        .section-title { text-align: center; font-size: 18px; margin: 10px 0 20px 0; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.9); position: relative; }
+        /* --- SECTIONS --- */
+        .section-title { text-align: center; font-size: 18px; margin: 40px 0 30px 0; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.9); position: relative; }
         .section-title::after { content: ''; display: block; width: 40px; height: 3px; background: #ff0055; margin: 5px auto 0; border-radius: 2px; }
 
-        /* --- 6. PACKAGES --- */
+        /* --- PACKAGES --- */
         .packages-container { padding: 0 20px; display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px; }
         .modern-card { position: relative; background: rgba(20, 20, 40, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 25px; overflow: hidden; transition: 0.3s; backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; }
         .modern-card:active { transform: scale(0.98); }
@@ -57,31 +93,44 @@
         .arrow-btn { background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: white; }
         .bg-icon { position: absolute; right: -20px; bottom: -20px; font-size: 100px; opacity: 0.05; transform: rotate(-15deg); pointer-events: none; }
 
-        /* --- 7. SLIDERS --- */
-        .swiper { width: 100%; padding-top: 10px; padding-bottom: 30px; }
-        .swiper-slide { background-position: center; background-size: cover; background-repeat: no-repeat; width: 260px; height: 320px; background-color: #1a1a1a; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: center; align-items: flex-end; padding-bottom: 20px; color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        /* --- SLIDER CSS --- */
+        .swiper { width: 100%; padding-bottom: 50px; }
+        .swiper-slide { 
+            background-position: center; background-size: cover; background-repeat: no-repeat; 
+            width: 260px; height: 340px; 
+            background-color: #1a1a1a; border-radius: 20px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            display: flex; justify-content: center; align-items: flex-end; 
+            padding-bottom: 20px; color: white; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
         .tools-slider .swiper-slide { width: 200px; height: 250px; }
         .photo-text { background: rgba(0,0,0,0.7); padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 600; letter-spacing: 1px; backdrop-filter: blur(5px); }
 
-        /* --- 8. MODAL & FORM --- */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); z-index: 1200; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; }
-        .modal-card { width: 85%; max-width: 350px; background: rgba(20, 20, 40, 0.95); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 25px; padding: 30px; text-align: center; transform: scale(0.8); transition: transform 0.3s; position: relative; }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; color: rgba(255,255,255,0.5); cursor: pointer; z-index: 10; }
-        
+        /* --- MODAL --- */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); z-index: 1200; display: none; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
+        .modal-card { width: 85%; max-width: 350px; background: rgba(20, 20, 40, 0.95); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 25px; padding: 30px; text-align: center; transform: scale(0.8); transition: 0.3s; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-overlay.active .modal-card { transform: scale(1); }
         .modal-title { font-size: 24px; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; }
         .modal-price { font-size: 28px; font-weight: 600; color: #ff0055; margin: 10px 0; }
         .modal-details { text-align: left; margin: 20px 0; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.8); padding-left: 10px; }
         .modal-details li { margin-bottom: 8px; list-style: none; }
-        
         .action-btn { width: 100%; padding: 15px; background: linear-gradient(90deg, #ff0055, #ff5e00); border: none; border-radius: 50px; color: white; font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 20px rgba(255, 0, 85, 0.4); cursor: pointer; margin-top: 10px; }
         .whatsapp-green { background: linear-gradient(45deg, #25D366, #128C7E); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); }
+        .modal-input { width: 100%; padding: 12px; margin-bottom: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: white; }
 
-        .modal-input { width: 100%; padding: 12px; margin-bottom: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: white; font-size: 14px; font-family: 'Poppins', sans-serif; }
-        .modal-input:focus { border-color: #ffd700; background: rgba(0,0,0,0.6); }
-
-        .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-overlay.active .modal-card { transform: scale(1); }
-
+        /* --- FLOATING WA & CREDIT --- */
+        .float-wa { position: fixed; bottom: 25px; right: 25px; background: #25D366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1500; text-decoration: none; animation: pulse 2s infinite; }
+        .footer-credit { text-align: center; font-size: 10px; color: rgba(255, 255, 255, 0.4); padding: 20px 0 15px 0; margin-top: 20px; letter-spacing: 0px; text-transform: uppercase; }
+        .footer-credit span { color: #FF0; font-weight: 600; }
+        
+        /* Heart Pulse Animation */
+        .heart-beat { color: #ff0055; animation: beat 1s infinite; display: inline-block; }
+        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+        
+        @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        
     </style>
 </head>
 <body>
@@ -90,6 +139,10 @@
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
     </div>
+
+    <a href="https://wa.me/917688843858" target="_blank" class="float-wa">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <header>
         <div class="logo-block">
@@ -106,215 +159,181 @@
         <div class="close-menu" onclick="toggleMenu()">×</div>
         <div class="menu-items">
             <a href="#" class="menu-link" onclick="toggleMenu()"><i class="fas fa-home"></i> Home</a>
-            
             <details style="width: 100%;">
                 <summary class="menu-link" style="list-style: none; cursor: pointer;">
                     <i class="fas fa-info-circle"></i> About Us <span style="font-size: 10px; opacity: 0.5; margin-left: auto;">▼</span>
                 </summary>
                 <div style="padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px; margin-top: 10px; font-size: 13px; color: #ddd; line-height: 1.6; border: 1px solid rgba(255,255,255,0.1);">
                     <p style="margin: 0 0 8px 0;">Hello! Main <strong style="color:#ffd700;">Arvind Gehlot</strong> </p>
-                    <p style="margin: 0 0 8px 0;">Founder of <strong>Nivera Photography</strong> (Ajmer).</p>
-                    <p style="margin: 0;">Nivra Photography - Jahan Parampara aur Technology ka mail hota hai.Hum jaante hain ki Bharat mein shaadi sirf ek event nahi, balki do parivaron ka tyohar hota hai. Isliye hum sirf photographer bankar nahi, balki parivar ka hissa bankar kaam karte hain.Best cameras, drone shots, aur cinematic editing ke saath, hum aapki shaadi ko kisi Bollywood movie se kam nahi lagne denge. Aap bas jashn manaiye, baaki yaadein hum sambhal lenge.</p>
+                    <p style="margin: 0;">Founder of <strong>Nivera Photography</strong> (Ajmer).</p>
                 </div>
             </details>
             
+            <a href="https://www.google.com/maps/search/?api=1&query=Nivra+Photography+Ajmer" target="_blank" class="menu-link"><i class="fas fa-map-marker-alt" style="color: #ff5722;"></i> Location</a>
+            
             <a href="tel:+917688843858" class="menu-link"><i class="fas fa-phone-alt"></i> Call Now</a>
             <a href="https://wa.me/917688843858" target="_blank" class="menu-link"><i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp</a>
-            <a href="https://www.instagram.com/nivra_photowala?igsh=MXhydG94cHBuc3BrcQ==" target="_blank" class="menu-link"><i class="fab fa-instagram" style="color: #E1306C;"></i> Instagram</a>
+            
+            <a href="https://www.instagram.com/nivra_photowala?igsh=MXhydG94cHBuc3BrcQ==" target="_blank" class="menu-link" style="margin-bottom: 0;">
+                <i class="fab fa-instagram" style="color: #E1306C;"></i> Instagram
+            </a>
+            <p style="font-size: 10px; color: rgba(255,255,255,0.6); margin: -10px -0 -15px 45px; font-style: italic; letter-spacing: 0px;">follow us on Instagram</p>
+
             <a href="mailto:nivera@email.com" class="menu-link"><i class="fas fa-envelope"></i> Email Us</a>
         </div>
     </div>
 
-    <h2 class="section-title">Our Packages</h2>
-    <div class="packages-container">
-        <div class="modern-card card-silver" onclick="openModal('silver')">
-            <i class="fas fa-camera bg-icon"></i>
-            <div><h3>Silver</h3><div class="pkg-desc">Budget Friendly</div></div>
-            <div class="arrow-btn"><i class="fas fa-arrow-right"></i></div>
+    <section class="hero-section">
+        <div class="hero-title" data-aos="fade-up">Celebrating<br><span>Love & Traditions</span></div>
+        <div class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+            <span class="typing-text">Premium Wedding Photography in Ajmer</span>
         </div>
-
-        <div class="modern-card card-gold" onclick="openModal('gold')">
-            <i class="fas fa-crown bg-icon"></i>
-            <div><h3>Gold</h3><div class="pkg-desc">Most Popular</div></div>
-            <div class="arrow-btn"><i class="fas fa-arrow-right"></i></div>
+            </div>
         </div>
+        </section>
 
-        <div class="modern-card card-diamond" onclick="openModal('diamond')">
-            <i class="fas fa-gem bg-icon"></i>
-            <div><h3>Diamond</h3><div class="pkg-desc">The Ultimate Royal Experience</div></div>
-            <div class="arrow-btn"><i class="fas fa-arrow-right"></i></div>
+    <div style="padding: 40px 20px; text-align: center;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            <div data-aos="fade-up" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; width: 100%; max-width: 300px; border: 1px solid rgba(255,215,0,0.1);">
+                <i class="fas fa-crown" style="font-size: 30px; color: #ffd700; margin-bottom: 10px;"></i>
+                <h3 style="font-size: 16px; margin: 5px 0;">Candid Storytelling</h3>
+                <p style="font-size: 11px; opacity: 0.7; margin: 0;">We capture real emotions and unscripted moments, not just posed smiles.</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="100" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; width: 100%; max-width: 300px; border: 1px solid rgba(255,215,0,0.1);">
+                <i class="fas fa-magic" style="font-size: 30px; color: #ffd700; margin-bottom: 10px;"></i>
+                <h3 style="font-size: 16px; margin: 5px 0;">Balanced Cinematic Edit</h3>
+                <p style="font-size: 11px; opacity: 0.7; margin: 0;">Perfectly balanced lighting and colors for every ritual—from the bright sunny Haldi to the dramatic lights of Sangeet.</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="200" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; width: 100%; max-width: 300px; border: 1px solid rgba(255,215,0,0.1);">
+                <i class="fas fa-clock" style="font-size: 30px; color: #ffd700; margin-bottom: 10px;"></i>
+                <h3 style="font-size: 16px; margin: 5px 0;">Fast Delivery</h3>
+                <p style="font-size: 11px; opacity: 0.7; margin: 0;">We value your excitement. Receive your fully edited album faster than expected.</p>
+            </div>
         </div>
     </div>
 
-    <h2 class="section-title">Our Work</h2>
-    <div class="swiper workSwiper">
+    <h2 class="section-title" data-aos="fade-up">Our Packages</h2>
+    <div class="packages-container">
+        <div class="modern-card card-silver" onclick="openModal('silver')" data-aos="fade-up">
+            <i class="fas fa-camera bg-icon"></i><div><h3>Silver</h3><div class="pkg-desc">Budget Friendly</div></div><div class="arrow-btn"><i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="modern-card card-gold" onclick="openModal('gold')" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-crown bg-icon"></i><div><h3>Gold</h3><div class="pkg-desc">Most Popular</div></div><div class="arrow-btn"><i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="modern-card card-diamond" onclick="openModal('diamond')" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-gem bg-icon"></i><div><h3>Diamond</h3><div class="pkg-desc">The Ultimate Royal Experience</div></div><div class="arrow-btn"><i class="fas fa-arrow-right"></i></div>
+        </div>
+    </div>
+
+    <h2 class="section-title" data-aos="fade-up">Recent Work</h2>
+    <div class="swiper workSwiper" data-aos="fade-up">
         <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image: url('1.jpg');"><div class="photo-text">Wedding</div></div>
             <div class="swiper-slide" style="background-image: url('2.jpg');"><div class="photo-text">Portrait</div></div>
             <div class="swiper-slide" style="background-image: url('3.jpg');"><div class="photo-text">Baby Shoot</div></div>
             <div class="swiper-slide" style="background-image: url('4.jpg');"><div class="photo-text">Cinematic</div></div>
-            <div class="swiper-slide" style="background-image: url('candid.jpg');"><div class="photo-text">Candid</div></div>
-            <div class="swiper-slide" style="background-image: url('pre-wedding.jpg');"><div class="photo-text">Pre-Wedding</div></div>
-            <div class="swiper-slide" style="background-image: url('haldi.jpg');"><div class="photo-text">Haldi/Event</div></div>
+            <div class="swiper-slide" style="background-image: url('5.jpg');"><div class="photo-text">Pre-Wedding</div></div>
+            <div class="swiper-slide" style="background-image: url('6.jpg');"><div class="photo-text">Candid</div></div>
         </div>
     </div>
 
-    <h2 class="section-title">Our Tools</h2>
-    <div class="swiper toolsSwiper tools-slider">
+    <h2 class="section-title" data-aos="fade-up">Our Gear</h2>
+    <div class="swiper toolsSwiper tools-slider" data-aos="fade-up">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url('cam-main.jpg');"><div class="photo-text">Canon R6 <i class="fas fa-camera"></i></div></div>
-            <div class="swiper-slide" style="background-image: url('video-main.jpg');"><div class="photo-text">Sony A7 <i class="fas fa-video"></i></div></div>
-            <div class="swiper-slide" style="background-image: url('drone-main.jpg');"><div class="photo-text">Drone 4K <i class="fas fa-plane"></i></div></div>
-            <div class="swiper-slide" style="background-image: url('gimbal-main.jpg');"><div class="photo-text">Gimbal <i class="fas fa-mobile"></i></div></div>
-            <div class="swiper-slide" style="background-image: url('light-main.jpg');"><div class="photo-text">Lights <i class="fas fa-bolt"></i></div></div>
+            <div class="swiper-slide" style="background-image: url('cam-main.jpg');"><div class="photo-text">Canon R6</div></div>
+            <div class="swiper-slide" style="background-image: url('video-main.jpg');"><div class="photo-text">Sony A7</div></div>
+            <div class="swiper-slide" style="background-image: url('drone-main.jpg');"><div class="photo-text">Drone 4K</div></div>
+            <div class="swiper-slide" style="background-image: url('gimbal-main.jpg');"><div class="photo-text">Gimbal</div></div>
+            <div class="swiper-slide" style="background-image: url('light-main.jpg');"><div class="photo-text">Lights</div></div>
         </div>
+    </div>
+
+    <div class="footer-credit">
+        Designed & Developed by <span>Manoj</span> <span class="heart-beat"></span>
     </div>
 
     <div class="modal-overlay" id="packageModal">
         <div class="modal-card">
             <div class="close-btn" onclick="closeModal()">×</div>
-            
             <div id="step-details">
-                <h2 class="modal-title" id="mTitle">Gold</h2>
-                <div class="modal-price" id="mPrice">₹15k</div>
-                <ul class="modal-details" id="mList"></ul>
-                <button class="action-btn" onclick="showForm()">Book Now</button>
+                <h2 class="modal-title" id="mTitle">Gold</h2><div class="modal-price" id="mPrice">₹15k</div><ul class="modal-details" id="mList"></ul><button class="action-btn" onclick="showForm()">Book Now</button>
             </div>
-
             <div id="step-form" style="display: none;">
                 <h3 style="margin-bottom: 15px; color: #ffd700;">Enter Details</h3>
                 <input type="text" id="c_name" class="modal-input" placeholder="Your Name">
                 <input type="date" id="c_date" class="modal-input">
-                <input type="text" id="c_city" class="modal-input" placeholder="Event City (e.g. Ajmer)">
-                
-                <button class="action-btn whatsapp-green" onclick="submitToWhatsapp()">
-                    Done <i class="fab fa-whatsapp"></i>
-                </button>
-                <button onclick="showDetails()" style="background:none; border:none; color:rgba(255,255,255,0.5); margin-top:10px; cursor:pointer;">&larr; Back</button>
+                <input type="text" id="c_city" class="modal-input" placeholder="Event City">
+                <button class="action-btn whatsapp-green" onclick="submitToWhatsapp()">Send <i class="fab fa-whatsapp"></i></button>
+                <button onclick="showDetails()" style="background:none; border:none; color:rgba(255,255,255,0.5); margin-top:10px; cursor:pointer;">← Back</button>
             </div>
-
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
-        // --- SLIDER SETUP ---
+        AOS.init({ duration: 1000, once: true });
+
         var workSwiper = new Swiper(".workSwiper", {
-            slidesPerView: "auto", spaceBetween: 20, centeredSlides: true, loop: true,
-            autoplay: { delay: 2500, disableOnInteraction: false },
+            slidesPerView: "auto", spaceBetween: 20, centeredSlides: true, loop: true, autoplay: { delay: 2500, disableOnInteraction: false },
         });
 
-        // Tools Slider 
         var toolsSwiper = new Swiper(".toolsSwiper", {
             slidesPerView: "auto", spaceBetween: 15, centeredSlides: true, loop: true,
         });
 
-        // --- MENU LOGIC ---
         function toggleMenu() { document.getElementById('sideMenu').classList.toggle('active'); }
 
-        // --- DATA (Packages Details) ---
         const packages = {
-            silver: { 
-                title: "Silver Package", 
-                price: "₹35,000", 
-                features: [
-                    "Traditional Photography", 
-                    "Traditional Videography", 
-                    "One Day Drone", 
-                    "Album: 30 sheet (150 photo select)",
-                    "Full HD 4 hours video with pendrive"
-                ] 
-            },
-            gold: { 
-                title: "Gold Package", 
-                price: "₹80,000", 
-                features: [
-                    "Pre-Wedding Shoot",
-                    "Traditional Photography (40 sheet Ntr Album)",
-                    "Candid Photography (2 Days)",
-                    "Traditional Video (5 hours)",
-                    "Wedding Highlight Video (5-6 min)",
-                    "Drone (1 Day) & Led Wall",
-                    "6 Led Frame",
-                    "Free: Wedding Invitations & Reels"
-                ] 
-            },
-            diamond: { 
-                title: "Diamond Package", 
-                price: "₹1,70,000", 
-                features: [
-                    "Pre-Wedding (2 Days)",
-                    "Trad. Photo (60 sheet N.T.R Album)",
-                    "Candid Photography (2 Days)",
-                    "Trad. Video (5 hours) & Cinematic (2 Days)",
-                    "Wedding Highlight (5-6 min)",
-                    "Drone (2) & Led Wall (2 Days)",
-                    "8 Led Boards",
-                    "Free: Invites, Reels, Mini Album, Frame, 10 Days Countdown Posts"
-                ] 
-            }
+            silver: { title: "Silver Package", price: "₹35,000", features: ["Traditional Photography", "Traditional Videography", "One Day Drone", "Album: 30 sheet", "Full HD 4 hrs video"] },
+            gold: { title: "Gold Package", price: "₹80,000", features: ["Pre-Wedding Shoot", "Trad. Photo (40 sheet)", "Candid Photo (2 Days)", "Trad. Video (5 hrs)", "Highlight Video", "Drone (1 Day)", "Led Wall", "Free: Invites & Reels"] },
+            diamond: { title: "Diamond Package", price: "₹1,70,000", features: ["Pre-Wedding (2 Days)", "Trad. Photo (60 sheet)", "Candid Photo (2 Days)", "Trad. Video & Cinematic", "Drone (2) & Led Wall (2 Days)", "8 Led Boards", "Free: Ultimate Bundle"] }
         };
-
         let currentPackage = ""; 
-
-        // --- MODAL LOGIC ---
         const modal = document.getElementById('packageModal');
         const stepDetails = document.getElementById('step-details');
         const stepForm = document.getElementById('step-form');
 
-        // 1. Open Modal
         function openModal(type) {
             currentPackage = type; 
             const data = packages[type];
-            
             document.getElementById('mTitle').innerText = data.title;
             document.getElementById('mPrice').innerText = data.price;
             document.getElementById('mList').innerHTML = "";
             data.features.forEach(f => document.getElementById('mList').innerHTML += `<li>- ${f}</li>`);
-            
-            stepDetails.style.display = "block";
-            stepForm.style.display = "none";
-            
-            modal.classList.add('active');
+            stepDetails.style.display = "block"; stepForm.style.display = "none"; modal.classList.add('active');
         }
-
         function closeModal() { modal.classList.remove('active'); }
         modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-
-        // 2. Switch to Form
-        function showForm() {
-            stepDetails.style.display = "none";
-            stepForm.style.display = "block";
-        }
-
-        // 3. Switch back to Details
-        function showDetails() {
-            stepForm.style.display = "none";
-            stepDetails.style.display = "block";
-        }
-
-        // 4. Send to WhatsApp
+        function showForm() { stepDetails.style.display = "none"; stepForm.style.display = "block"; }
+        function showDetails() { stepForm.style.display = "none"; stepDetails.style.display = "block"; }
         function submitToWhatsapp() {
             var name = document.getElementById("c_name").value;
             var date = document.getElementById("c_date").value;
             var city = document.getElementById("c_city").value;
-            var pkgName = packages[currentPackage].title; 
-
-            if(name === "" || date === "" || city === "") {
-                alert("Please fill all details!");
-                return;
-            }
-
-            var message = "Hello Nivra Photography, I want to book a package.%0a%0a";
-            message += "📦 *Package:* " + pkgName + "%0a";
-            message += "👤 *Name:* " + name + "%0a";
-            message += "📅 *Date:* " + date + "%0a";
-            message += "📍 *Location:* " + city;
-
-            var myNumber = "917688843858"; 
-            var url = "https://wa.me/" + myNumber + "?text=" + message;
+            if(name === "" || date === "" || city === "") { alert("Please fill all details!"); return; }
+            var url = "https://wa.me/917688843858?text=" + "Hello Nivra Photography, I want to book " + packages[currentPackage].title + " for " + name + " on " + date + " at " + city;
             window.open(url, '_blank').focus();
         }
+
+        // --- NEW ANALOG CLOCK SCRIPT ---
+        function updateClock() {
+            const now = new Date();
+            const second = now.getSeconds();
+            const minute = now.getMinutes();
+            const hour = now.getHours();
+            
+            const secondDeg = (second / 60) * 360;
+            const minuteDeg = (minute / 60) * 360 + (second / 60) * 6;
+            const hourDeg = (hour / 12) * 360 + (minute / 60) * 30;
+
+            document.getElementById('second-hand').style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
+            document.getElementById('minute-hand').style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
+            document.getElementById('hour-hand').style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
     </script>
 </body>
 </html>
