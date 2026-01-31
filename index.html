@@ -229,7 +229,7 @@
     <div class="swiper workSwiper" data-aos="fade-up">
         <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image: url('1.jpg');"><div class="photo-text">Wedding</div></div>
-            <div class="swiper-slide" style="background-image: url('2.jpg');"><div class="photo-text">Portrait</div></div>
+            <div class="swiper-slide" style="background-image: url('Portrait.jpg');"><div class="photo-text">Portrait</div></div>
             <div class="swiper-slide" style="background-image: url('3.jpg');"><div class="photo-text">Baby Shoot</div></div>
             <div class="swiper-slide" style="background-image: url('4.jpg');"><div class="photo-text">Cinematic</div></div>
             <div class="swiper-slide" style="background-image: url('5.jpg');"><div class="photo-text">Pre-Wedding</div></div>
@@ -263,77 +263,4 @@
                 <input type="text" id="c_name" class="modal-input" placeholder="Your Name">
                 <input type="date" id="c_date" class="modal-input">
                 <input type="text" id="c_city" class="modal-input" placeholder="Event City">
-                <button class="action-btn whatsapp-green" onclick="submitToWhatsapp()">Send <i class="fab fa-whatsapp"></i></button>
-                <button onclick="showDetails()" style="background:none; border:none; color:rgba(255,255,255,0.5); margin-top:10px; cursor:pointer;">← Back</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script>
-        AOS.init({ duration: 1000, once: true });
-
-        var workSwiper = new Swiper(".workSwiper", {
-            slidesPerView: "auto", spaceBetween: 20, centeredSlides: true, loop: true, autoplay: { delay: 2500, disableOnInteraction: false },
-        });
-
-        var toolsSwiper = new Swiper(".toolsSwiper", {
-            slidesPerView: "auto", spaceBetween: 15, centeredSlides: true, loop: true,
-        });
-
-        function toggleMenu() { document.getElementById('sideMenu').classList.toggle('active'); }
-
-        const packages = {
-            silver: { title: "Silver Package", price: "₹35,000", features: ["Traditional Photography", "Traditional Videography", "One Day Drone", "Album: 30 sheet", "Full HD 4 hrs video"] },
-            gold: { title: "Gold Package", price: "₹80,000", features: ["Pre-Wedding Shoot", "Trad. Photo (40 sheet)", "Candid Photo (2 Days)", "Trad. Video (5 hrs)", "Highlight Video", "Drone (1 Day)", "Led Wall", "Free: Invites & Reels"] },
-            diamond: { title: "Diamond Package", price: "₹1,70,000", features: ["Pre-Wedding (2 Days)", "Trad. Photo (60 sheet)", "Candid Photo (2 Days)", "Trad. Video & Cinematic", "Drone (2) & Led Wall (2 Days)", "8 Led Boards", "Free: Ultimate Bundle"] }
-        };
-        let currentPackage = ""; 
-        const modal = document.getElementById('packageModal');
-        const stepDetails = document.getElementById('step-details');
-        const stepForm = document.getElementById('step-form');
-
-        function openModal(type) {
-            currentPackage = type; 
-            const data = packages[type];
-            document.getElementById('mTitle').innerText = data.title;
-            document.getElementById('mPrice').innerText = data.price;
-            document.getElementById('mList').innerHTML = "";
-            data.features.forEach(f => document.getElementById('mList').innerHTML += `<li>- ${f}</li>`);
-            stepDetails.style.display = "block"; stepForm.style.display = "none"; modal.classList.add('active');
-        }
-        function closeModal() { modal.classList.remove('active'); }
-        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-        function showForm() { stepDetails.style.display = "none"; stepForm.style.display = "block"; }
-        function showDetails() { stepForm.style.display = "none"; stepDetails.style.display = "block"; }
-        function submitToWhatsapp() {
-            var name = document.getElementById("c_name").value;
-            var date = document.getElementById("c_date").value;
-            var city = document.getElementById("c_city").value;
-            if(name === "" || date === "" || city === "") { alert("Please fill all details!"); return; }
-            var url = "https://wa.me/917688843858?text=" + "Hello Nivra Photography, I want to book " + packages[currentPackage].title + " for " + name + " on " + date + " at " + city;
-            window.open(url, '_blank').focus();
-        }
-
-        // --- NEW ANALOG CLOCK SCRIPT ---
-        function updateClock() {
-            const now = new Date();
-            const second = now.getSeconds();
-            const minute = now.getMinutes();
-            const hour = now.getHours();
-            
-            const secondDeg = (second / 60) * 360;
-            const minuteDeg = (minute / 60) * 360 + (second / 60) * 6;
-            const hourDeg = (hour / 12) * 360 + (minute / 60) * 30;
-
-            document.getElementById('second-hand').style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
-            document.getElementById('minute-hand').style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
-            document.getElementById('hour-hand').style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-    </script>
-</body>
-</html>
+                <button class="action-btn whatsapp-green" onclick="submitToWhatsa
