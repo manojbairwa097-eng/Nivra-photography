@@ -263,4 +263,104 @@
         Designed & Developed by <span>Manoj</span> <span class="heart-beat"></span>
     </div>
 
-    <div class="modal-ove
+    <div class="modal-overlay" id="packageModal">
+        <div class="modal-card">
+            <div class="close-btn" onclick="closeModal()">×</div>
+            <div id="step-details">
+                <h2 class="modal-title" id="mTitle">Gold</h2>
+                <ul class="modal-details" id="mList"></ul>
+                <button class="action-btn" onclick="showForm()">Book Now</button>
+            </div>
+            <div id="step-form" style="display: none;">
+                <h3 style="margin-bottom: 15px; color: #ffd700;">Enter Details</h3>
+                <input type="text" id="c_name" class="modal-input" placeholder="Your Name">
+                <input type="text" placeholder="Event Date" onfocus="(this.type='date')" ontouchstart="(this.type='date')" onblur="if(!this.value)this.type='text'" id="c_date" class="modal-input">
+                <input type="text" id="c_city" class="modal-input" placeholder="Event City">
+                <button class="action-btn whatsapp-green" onclick="submitToWhatsapp()">Send <i class="fab fa-whatsapp"></i></button>
+                <button onclick="showDetails()" style="background:none; border:none; color:rgba(255,255,255,0.5); margin-top:10px; cursor:pointer;">← Back</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        var workSwiper = new Swiper(".workSwiper", {
+            slidesPerView: "auto", spaceBetween: 20, centeredSlides: true, loop: true, autoplay: { delay: 2500, disableOnInteraction: false },
+        });
+
+        var toolsSwiper = new Swiper(".toolsSwiper", {
+            slidesPerView: "auto", spaceBetween: 15, centeredSlides: true, loop: true,
+        });
+
+        function toggleMenu() { document.getElementById('sideMenu').classList.toggle('active'); }
+
+        const packages = {
+            silver: { 
+                title: "Silver Package",
+                color: "#c0c0c0", /* Silver */
+                price: "₹35,000",
+                features: ["Traditional Photography", "Traditional Videography", "One Day Drone", "Album: 30 sheet", "Full HD 4 hours video with pendrive"] 
+            },
+            gold: { 
+                title: "Gold Package", 
+                color: "#ffd700", /* Gold */
+                price: "₹80,000", 
+                features: ["Pre-Wedding Shoot", "Traditional Photography", "Album 40 sheet", "Candid Photography (2 Days)", "Traditional Videography (5 hr with pandrive)", "Wedding Highlight Video", "Drone (1 Day)", "Led Wall","6 Led frame", "Complementry things- Wedding Invitations, Instagram Reels"] 
+            },
+            diamond: { 
+                title: "Diamond Package", 
+                color: "#00e5ff", /* Blue */
+                price: "₹1,70,000", 
+                features: ["Pre-Wedding (2 Days)", "Trad. Photo (60 sheet)", "Candid Photo (2 Days)", "Trad. Video & Cinematic", "Drone (2) & Led Wall (2 Days)", "8 Led Boards", "Free: Ultimate Bundle"] 
+            }
+        };
+
+        let currentPackage = ""; 
+        const modal = document.getElementById('packageModal');
+        const stepDetails = document.getElementById('step-details');
+        const stepForm = document.getElementById('step-form');
+
+        function openModal(type) {
+            currentPackage = type; 
+            const data = packages[type];
+            
+            const titleElement = document.getElementById('mTitle');
+            titleElement.innerText = data.title;
+            // DYNAMIC COLOR CHANGE LOGIC
+            titleElement.style.color = data.color;
+            titleElement.style.textShadow = `0 0 15px ${data.color}60`; 
+
+            document.getElementById('mList').innerHTML = "";
+            // BULLETS ALSO CHANGE COLOR
+            data.features.forEach(f => {
+                document.getElementById('mList').innerHTML += `<li><span style="color:${data.color}; margin-right:8px; flex-shrink:0;">●</span> ${f}</li>`;
+            });
+
+            stepDetails.style.display = "block"; stepForm.style.display = "none"; modal.classList.add('active');
+        }
+
+        function closeModal() { modal.classList.remove('active'); }
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        
+        function showForm() { stepDetails.style.display = "none"; stepForm.style.display = "block"; }
+        function showDetails() { stepForm.style.display = "none"; stepDetails.style.display = "block"; }
+        
+        function submitToWhatsapp() {
+            var name = document.getElementById("c_name").value;
+            var date = document.getElementById("c_date").value;
+            var city = document.getElementById("c_city").value;
+            
+            if(name === "" || date === "" || city === "") { alert("Please fill all details!"); return; }
+            
+            var msg = `*New Booking Enquiry* %0a------------------%0a*Package:* ${packages[currentPackage].title} %0a*Name:* ${name} %0a*Date:* ${date} %0a*City:* ${city}`;
+            var url = "https://wa.me/917688843858?text=" + msg;
+            
+            window.open(url, '_blank').focus();
+        }
+    </script>
+</body>
+</html>
